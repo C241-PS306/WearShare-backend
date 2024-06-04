@@ -8,7 +8,7 @@ C241-PS306 WearShare API Documentation (Bangkit Product Based Capstone)
 IN DEVELOPMENT PROGRESS
 ```
 
-## Cloud Services Infrastructure
+## Google Cloud Services Infrastructure
 
 _The cloud services used in Wearshare_
 
@@ -27,11 +27,6 @@ Google Cloud Platform (GCP) is a Google-provided set of cloud computing services
 
 The cloud technology that used in this project:
 
--   **Google Cloud Platform**: Suite of cloud computing services provided by Google.
--   **Firestore**: database for application.
--   **App Engine**: For deploying Backend API.
--   **Cloud Storage**: For storing the image assets.
--   **Cloud Run**: For deploying machine learning model.
 
 ## Technology Used
 
@@ -40,8 +35,7 @@ There are four applications of Google Cloud technologies in the **Fruitarians** 
 ### App Engine
 
 <img src="https://symbols.getvecta.com/stencil_4/8_google-app-engine.c22bd3c7a9.svg" width="100" height="50"/>
-
-This app service **`has not yet been deployed`**. on development environment.
+App Engine : For deploying Backend API.
 
 Service details:
 
@@ -59,12 +53,12 @@ Docs:
 
 <img src="https://symbols.getvecta.com/stencil_4/47_google-cloud-storage.fee263d33a.svg" width="100" height="50"/>
 
-This storage service **`has not yet been deployed`**. on development environment.
+Cloud Storage: For storing the image assets.
 
 ```YAML
-Location Type   : 
-Location        : 
-Storage Class   : 
+Location Type   : Single-Region
+Location        : asia-southeast2 (Jakarta)
+Storage Class   : Standard
 ```
 
 Docs: 
@@ -73,7 +67,7 @@ Docs:
 
 <img src="https://www.vectorlogo.zone/logos/google_cloud_run/google_cloud_run-ar21.svg" width="150" height="150"/>
 
-This cloud run service **`has not yet been deployed`**. on development environment.
+Cloud Run: For deploying machine learning model.
 
 ```YAML
 Location        : 
@@ -88,14 +82,14 @@ Docs:
 
 <img src="https://cdn.cdnlogo.com/logos/f/45/firestore.svg" width="120" height="100"/>
 
-This firestore service **`has not yet been deployed`** on development environment.
+Firestore: For storing ML result
 
 Service details:
 
 ```YAML
-Database Type   : 
-Location        : 
-Storage         : 
+Database Type   : NoSQL
+Location        : asia-southeast2 (Jakarta)
+Storage         : 10 GB
 ```
 
 Docs: 
