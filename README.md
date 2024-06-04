@@ -25,12 +25,7 @@ _The cloud services used in Wearshare_
 Google Cloud Platform (GCP) is a Google-provided set of cloud computing services. It is a platform that offers computing infrastructure and services for running applications, storing and managing data, and developing software solutions.
 
 
-The cloud technology that used in this project:
-
-
-## Technology Used
-
-There are four applications of Google Cloud technologies in the **Fruitarians** application: Firestore, App Engine, Cloud Storage, and Cloud Run. On the cloud side, these three services are utilized to handle all requests and provide data services.
+## Technology Used for this project
 
 ### App Engine
 
