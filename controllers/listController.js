@@ -37,7 +37,7 @@ const getPantiAsuhanById = async (req, res) => {
 
         // Memeriksa apakah dokumen ditemukan
         if (!doc.exists) {
-            res.status(404).json({ message: "Panti Asuhan tidak ditemukan" });
+            res.status(404).json({ message: "Panti Asuhan(id) tidak ditemukan" });
             return;
         }
 
@@ -49,12 +49,67 @@ const getPantiAsuhanById = async (req, res) => {
     } catch (error) {
         // Menangani kesalahan jika terjadi saat mengambil data panti asuhan
         console.error("Error fetching panti asuhan:", error);
-        res.status(500).json({ message: "Terjadi kesalahan saat mengambil data panti asuhan" });
+        res.status(500).json({ message: "Terjadi kesalahan saat mengambil data panti asuhan(id)" });
     }
 };
+
+
+// ==============================================Textile Recycling - Pengolahan limbah tekstil===================================================
+const getAllPengolahanLimbah = async (req, res) => {
+    try {
+        
+        const snapshot = await db.collection('TextileRecycling').get();
+        const pengolahanLimbah = [];
+        
+        snapshot.forEach(doc => {
+            
+            pengolahanLimbah.push({
+                id: doc.id, // ID dokumen
+                ...doc.data() // Data dokumen
+            });
+        });
+
+      
+        res.json(pengolahanLimbah);
+    } catch (error) {
+     
+        console.error("Error fetching pengolahan Limbah", error);
+        res.status(500).json({ message: "Terjadi kesalahan saat mengambil data pengolahan Limbah" });
+    }
+
+};
+
+const getpengolahanLimbahById = async (req, res) => {
+    const id = req.params.id; // Mengambil ID dari parameter URL
+    try {
+        
+        const doc = await db.collection('TextileRecycling').doc(id).get();
+
+        // Memeriksa apakah dokumen ditemukan
+        if (!doc.exists) {
+            res.status(404).json({ message: "pengolahan Limbah(id) tidak ditemukan" });
+            return;
+        }
+
+       
+        res.json({
+            id: doc.id, // ID dokumen
+            ...doc.data() // Data dokumen
+        });
+    } catch (error) {
+       
+        console.error("Error fetching pengolahan Limbah:", error);
+        res.status(500).json({ message: "Terjadi kesalahan saat mengambil data(id) pengolahan Limbah" });
+    }
+};
+
+
+
 
 // Export fungsi getAllPantiAsuhan dan getPantiAsuhanById agar dapat digunakan oleh routes.js
 module.exports = {
     getAllPantiAsuhan,
-    getPantiAsuhanById
+    getPantiAsuhanById,
+    getAllPengolahanLimbah,
+    getpengolahanLimbahById
 };
