@@ -4,6 +4,7 @@ const express = require('express');
 const session = require('express-session');
 const multer = require('multer');
 const authRoutes = require('./routes/authRoutes');
+const listRoutes = require('./routes/listRoutes')
 
 const app = express();
 
@@ -31,6 +32,7 @@ app.use(session({
 
 // Apply multer middleware only to routes that require it
 app.use('/auth', upload.none(), authRoutes);
+app.use('/list', listRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
