@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const controller = require('./controller');
+const { getAllPantiAsuhan, getPantiAsuhanById } = require('../controllers/listController');
 
 // Endpoint untuk mendapatkan semua data panti asuhan
 router.get('/panti-asuhan', controller.getAllPantiAsuhan);
