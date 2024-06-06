@@ -1,11 +1,12 @@
-const { Firestore } = require('@google-cloud/firestore'); //Import Firestore
-const firestore = new Firestore(); //Firestore instance disini
+// const { Firestore } = require('@google-cloud/firestore'); //Import Firestore
+const { admin,db} = require('../database/firestore');
+
 
 // Get orphanage data from firestore
 const getAllPantiAsuhan = async (req, res) => {
     try {
         // Get collection (snapshot) orphanage
-        const snapshot = await firestore.collection('panti asuhan').get();
+        const snapshot = await db.collection('orphanage').get();
         const pantiAsuhan = []; // Empty list to storing orphanage data
 
         // Buat loop untuk menelusuri dokumen
@@ -32,7 +33,7 @@ const getPantiAsuhanById = async (req, res) => {
     const id = req.params.id; // Mengambil ID dari parameter URL
     try {
         // Mendapatkan dokumen panti asuhan berdasarkan ID dari koleksi 'pantiAsuhan'
-        const doc = await firestore.collection('pantiAsuhan').doc(id).get();
+        const doc = await db.collection('orphanage').doc(id).get();
 
         // Memeriksa apakah dokumen ditemukan
         if (!doc.exists) {
