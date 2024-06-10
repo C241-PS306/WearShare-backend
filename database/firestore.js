@@ -1,4 +1,3 @@
-// firestore.js
 const admin = require('firebase-admin');
 const { Storage } = require('@google-cloud/storage');
 const serviceAccount=require('../service-account.json')
@@ -12,5 +11,4 @@ const db = admin.firestore();
 const storage = new Storage();
 
 module.exports = { admin, db, storage };
-
 
