@@ -5,7 +5,8 @@ const session = require('express-session');
 const multer = require('multer');
 const authRoutes = require('./routes/authRoutes');
 const predictionRoutes = require('./routes/predictionRoutes');
-const listRoutes = require('./routes/listRoutes')
+const listRoutes = require('./routes/listRoutes');
+const nearbyRoutes = require('./routes/nearbyRoutes');
 
 const app = express();
 
@@ -35,6 +36,7 @@ app.use(session({
 app.use('/auth', upload.none(), authRoutes);
 app.use('/api', predictionRoutes);
 app.use('/list', listRoutes);
+app.use('/map', nearbyRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
