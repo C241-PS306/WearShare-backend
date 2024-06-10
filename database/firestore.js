@@ -11,3 +11,4 @@ const db = admin.firestore();
 const storage = new Storage();
 
 module.exports = { admin, db, storage };
+
