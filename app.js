@@ -30,7 +30,7 @@ app.use(session({
   secret: process.env.SECRET_KEY, // Use the secret key from the environment variables
   resave: false,
   saveUninitialized: true,
-  cookie: { secure: false } // Set to true if using HTTPS
+  cookie: { secure: true } // Set to true if using HTTPS
 }));
 
 // Apply multer middleware only to routes that require it

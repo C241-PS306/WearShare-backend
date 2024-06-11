@@ -1,5 +1,5 @@
 // models/userModel.js
-const db = require('../database/firestore');
+const {db} = require('../database/firestore');
 
 class User {
   constructor(username, email, password) {
