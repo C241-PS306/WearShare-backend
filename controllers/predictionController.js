@@ -1,15 +1,56 @@
 const { admin,db, storage } = require('../database/firestore');
 const { v4: uuidv4 } = require('uuid');
+const tf = require('@tensorflow/tfjs-node');
+require('dotenv').config();
+
+// Load the model from Google Cloud Storage
+let model;
+const loadModel = async () => {
+  if (!model) {
+    const modelUrl = process.env.MODEL_URL;
+    if (!modelUrl) {
+      throw new Error('Model URL not defined in environment variables');
+    }
+    model = await tf.loadLayersModel(modelUrl);
+  }
+};
+
+// Function to map prediction result to class labels based on threshold
+const getResultClass = (prediction) => {
+  const threshold = 0.57; // You can adjust this threshold as needed
+  
+  if (prediction[0] >= threshold) { // Assuming prediction is a single value in an array
+    return 'Baju tidak layak';
+  } else {
+    return 'Baju layak';
+  }
+};
+
 
 exports.predict = async (req, res) => {
   try {
-    const { email, result } = req.body;
+    const { email } = req.body;
     const file = req.file;
 
     // Memastikan email, file, dan result ada dalam request
-    if (!email || !file || !result) {
-      return res.status(400).json({ message: 'Email, image, and result are required' });
+    if (!email || !file ) {
+      return res.status(400).json({ message: 'Email and image are required' });
     }
+
+    await loadModel(); // Ensure the model is loaded
+
+    // Preprocess the image file
+    const imageBuffer = file.buffer;
+    const tensor = tf.node.decodeImage(imageBuffer);
+    const resizedImage = tf.image.resizeBilinear(tensor, [256, 256]); // Resize to match your model's input size
+    const normalizedImage = resizedImage.div(255.0).expandDims(0); // Normalize and add batch dimension
+
+    // Make prediction
+    const prediction = model.predict(normalizedImage);
+    const resultArray = prediction.arraySync()[0]; // Assuming single output
+    console.log('Prediction values:', resultArray); // Log the prediction values
+    const resultClass = getResultClass(resultArray);
+    console.log('Result class:', resultClass); // Log the predicted class
 
     const filename = `${email}/${uuidv4()}_${file.originalname}`;
 
@@ -36,7 +77,7 @@ exports.predict = async (req, res) => {
         await db.collection('predictionHistory').add({
           email: email,
           imageUrl: publicUrl,
-          result: result,
+          result: resultClass,
           timestamp: admin.firestore.FieldValue.serverTimestamp() // Import admin jika belum diimport sebelumnya
         });
         
