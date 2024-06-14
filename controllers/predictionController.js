@@ -81,7 +81,7 @@ exports.predict = async (req, res) => {
           timestamp: admin.firestore.FieldValue.serverTimestamp() // Import admin jika belum diimport sebelumnya
         });
         
-        res.status(201).json({ message: 'Prediction saved successfully' });
+        res.status(201).json({ message: `Prediction saved successfully: ${resultClass}`, result: resultClass, imageUrl: publicUrl });
       } catch (error) {
         console.error('Error saving prediction to Firestore:', error);
         res.status(500).json({ message: 'Failed to save prediction to Firestore' });
