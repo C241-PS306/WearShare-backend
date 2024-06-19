@@ -13,7 +13,7 @@ IN DEVELOPMENT PROGRESS
 _The cloud services used in Wearshare_
 
 <p style="text-align: center; background-color: #eee; display: inline-block; padding: 14px 20px; border-radius: 15px;">
-<img src="https://i.pinimg.com/736x/b9/52/e6/b952e666b566da4a24f37c88653d5755.jpg" width="800"/>
+<img src="https://github.com/C241-PS306/.github/blob/main/profile/image/GoogleCloudService-WearShare-Page-1.drawio.png?raw=true" width="800"/>
 </p>
 
 **Powered by:**
