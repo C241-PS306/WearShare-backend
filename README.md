@@ -79,5 +79,15 @@ Location        : asia-southeast2 (Jakarta)
 Docs: 
 ```
 
+### Monitoring
+
+<img src="" width="120" height="100"/>
+
+Monitoring: For ...
+
+```sh
+Docs: 
+```
+
 
 
