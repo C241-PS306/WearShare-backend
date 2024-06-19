@@ -35,13 +35,15 @@ App Engine : For deploying Backend API.
 Service details:
 
 ```YAML
-Location          : 
-Instance Type     : 
-Persintence disk  : 
-Runtime           : 
+Location          : asia-southeast2 (Jakarta)
+Instance Type     : F1
+Persintence disk  : 10
+Runtime           : nodejs18
 ```
 
-Docs:
+```sh
+Docs: 
+```
 
 
 ### Cloud Storage
@@ -56,22 +58,9 @@ Location        : asia-southeast2 (Jakarta)
 Storage Class   : Standard
 ```
 
+```sh
 Docs: 
-
-### Cloud Run
-
-<img src="https://www.vectorlogo.zone/logos/google_cloud_run/google_cloud_run-ar21.svg" width="150" height="150"/>
-
-Cloud Run: For deploying machine learning model.
-
-```YAML
-Location        : 
-CPU             : 
-Memory          : 
-
 ```
-
-Docs: 
 
 ### Firestore
 
